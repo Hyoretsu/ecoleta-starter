@@ -4,6 +4,9 @@ const server = express();
 // pegar o banco de dados
 const db = require('./database/db');
 
+const cors = require('cors');
+server.use(cors({ origin: 'https://hyoretsu-ecoleta.herokuapp.com/' }));
+
 // configurar pasta publica
 server.use(express.static('public'));
 
@@ -97,4 +100,4 @@ server.get('/search', (req, res) => {
 });
 
 // ligar o servidor
-server.listen(3000);
+server.listen(process.env.PORT || 3000);
